@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gokul Map: Bermuda Triangle Edition 🛸</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+
+    #searchBox {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      padding: 10px;
+      background: white;
+      border-radius: 5px;
+      width: 300px;
+      border: 1px solid #aaa;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    #fakeCoords {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-family: monospace;
+      z-index: 999;
+    }
+
+    #loadingOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+
+<input type="text" id="searchBox" placeholder="Search literally anywhere..." />
+<div id="map"></div>
+<div id="fakeCoords">Lat: 404° Not Found, Lng: LOL</div>
+<div id="loadingOverlay">
+  <div>Calculating route... 🤓</div>
+  <div style="font-size: 16px; margin-top: 10px;">Totally taking you to your dream destination 😌</div>
+</div>
+
+<audio id="sfx" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+  const bermudaTriangle = [25.0, -71.0];
+  const map = L.map('map').setView(bermudaTriangle, 6);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© GokulMap | OpenSarcasticMap™'
+  }).addTo(map);
+
+  const marker = L.marker(bermudaTriangle).addTo(map)
+    .bindPopup("You have officially disappeared 🛸<br>No refunds.")
+    .openPopup();
+
+  const searchBox = document.getElementById('searchBox');
+  const loadingOverlay = document.getElementById('loadingOverlay');
+  const sfx = document.getElementById('sfx');
+
+  searchBox.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      loadingOverlay.style.display = 'flex';
+
+      setTimeout(() => {
+        loadingOverlay.style.display = 'none';
+        map.setView(bermudaTriangle, 7);
+        marker.openPopup();
+        sfx.play();
+        alert("Bravo. You’ve officially gotten lost in the Bermuda Triangle. Hope you packed snacks. 🍟");
+      }, 2500);
+    }
+  });
+</script>
+
+</body>
+</html>
+  
