@@ -73,15 +73,12 @@ Displays the sarcastic alert when user presses enter.
 
 ### Project Demo
 # Video
+<https://github.com/AnliyaDcunja/Useless-Project/blob/55a78e1317e71a25ba9db35d2aeb80cc4460b2d9/gogle.mp4/>
 
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
-
+- Anliya Dcunja:Frontend, idea generation
+- Almas N      :  Code debugging, deployment, and Bermuda-research assistant
 ---
 Made with ❤️ at TinkerHub Useless Projects 
 
